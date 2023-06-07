@@ -7,17 +7,10 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubcategoryController;
+use App\Http\Controllers\Backend\ProductController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -71,8 +64,10 @@ Route::middleware(['auth', 'role:vendor'])->group(function(){
 // Admin Login
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
-// Venfor Login
+// Vendor Login
 Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->name('vendor.login');
+Route::get('/boecome/vendor', [VendorController::class, 'BecomeVendor'])->name('boecome.vendor');
+Route::post('/vendor/registration', [VendorController::class, 'RegistorVendor'])->name('vendor.registration');
 
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
@@ -97,7 +92,42 @@ Route::controller(CategoryController::class)->group(function(){
     Route::post('/strore/category', [CategoryController::class, 'StoreCategory'])->name('strore.category');
     Route::get('/edit/category/{id}', [CategoryController::class, 'EditCategory'])->name('edit.category');
     Route::post('/update/category', [CategoryController::class, 'UpdateCategory'])->name('update.category');
+    Route::get('/delete/category/{id}', [CategoryController::class, 'DeleteCategory'])->name('delete.category');
 
+});
+
+ //SubCategory All Routes
+Route::controller(SubcategoryController::class)->group(function(){
+   
+    Route::get('/all/subcategory', [SubcategoryController::class, 'AllSubCategory'])->name('all.subcategory');
+    Route::get('/add/subcategory', [SubcategoryController::class, 'AddSubCategory'])->name('add.subcategory');
+    Route::post('/strore/subcategory', [SubcategoryController::class, 'StoreSubCategory'])->name('strore.subcategory');
+    Route::get('/edit/subcategory/{id}', [SubcategoryController::class, 'EditSubCategory'])->name('edit.subcategory');    
+    Route::post('/update/subcategory', [SubcategoryController::class, 'UpdateSubCategory'])->name('update.subcategory');    
+    Route::get('/delete/subcategory/{id}', [SubcategoryController::class, 'DeleteSubCategory'])->name('delete.subcategory');    
+    Route::get('/subcategory/ajax/{category_id}', [SubcategoryController::class, 'GetSubCategory']);    
+
+});
+
+
+ //Active Inactive Vendor All Routes
+Route::controller(AdminController::class)->group(function(){
+   
+    Route::get('/inactive/vendor', [AdminController::class, 'InactiveVendor'])->name('inactive.vendor');
+    Route::get('/active/vendor', [AdminController::class, 'ActiveVendor'])->name('active.vendor');
+    Route::get('/inactive/vendor/details/{id}', [AdminController::class, 'InactiveVendorDetails'])->name('inactive.vendor.details');
+    Route::post('/active/vendor/approve', [AdminController::class, 'ActiveVendorApprove'])->name('active.vendor.approve');
+    Route::get('/active/vendor/details/{id}', [AdminController::class, 'ActiveVendorDetails'])->name('active.vendor.details');
+    Route::post('/active/vendor/inactive', [AdminController::class, 'ActiveVendorInactive'])->name('active.vendor.inactive');
+
+});
+
+ //Product All Routes
+Route::controller(ProductController::class)->group(function(){
+   
+    Route::get('/all/product', [ProductController::class, 'AllProduct'])->name('all.product');
+    Route::get('/add/product', [ProductController::class, 'AddProduct'])->name('add.product');
+   
 });
 
 }); //End Middleware

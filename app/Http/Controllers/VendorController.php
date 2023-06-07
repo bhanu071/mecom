@@ -85,4 +85,38 @@ class VendorController extends Controller
         ]);
         return back()->with("status", " Password Changed Successfully");
     } //End Method
+
+    public function BecomeVendor(){
+        return view('auth.bocome_vendor');
+    } //End Method
+
+    public function RegistorVendor(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed'],
+        ]);
+
+        $user =  User::insert([
+            'name' => $request->name,            
+            'username' => $request->username,            
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'vendor_join' => $request->vendor_join,
+            'password' => Hash::make($request->password),
+            'role' => 'vendor',
+            'status' => 'inactive',
+        ]);
+
+
+        $notification = array(
+            'message' => 'Vendor Registered sucessfully',
+            'alert-type' => 'success'
+        );
+        
+
+        return redirect()->route('vendor.login')->with($notification);
+    }
+
 }

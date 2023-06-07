@@ -44,7 +44,7 @@ class CategoryController extends Controller
     } //End Method
 
     public function UpdateCategory(Request $request){
-        $category_id = $request->id;
+        $category_id = $request->category_id;
         $old_img = $request->old_img;
 
         if($request->file('category_image')){
@@ -83,5 +83,20 @@ class CategoryController extends Controller
     
             return redirect()->route('all.category')->with($notification);
         } //End else
+    } //End Method
+
+    public function DeleteCategory($id){
+        $category = Category::findOrfail($id);
+        $img = $category->category_image;
+        unlink($img);
+
+        Category::findOrFail($id)->delete();
+        
+        $notification = array(
+            'message' => 'Category Deleted Sucessfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     } //End Method
 }

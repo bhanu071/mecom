@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/css/main.css?v=5.3')}}" />
     <!-- Toster CSS -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+
+    
 </head>
 
 <body>
@@ -67,6 +69,7 @@
     <script src="{{asset('frontend/assets/js/plugins/jquery.vticker-min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/plugins/jquery.theia.sticky.js')}}"></script>
     <script src="{{asset('frontend/assets/js/plugins/jquery.elevatezoom.js')}}"></script>
+    
     <!-- Template  JS -->
     <script src="{{asset('frontend/assets/js/main.js?v=5.3')}}"></script>
     <script src="{{asset('frontend/assets/js/shop.js?v=5.3')}}"></script>
