@@ -25,9 +25,8 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
-
-                            <form id="myForm" method="post" action="{{url('/store/brand')}}" enctype="multipart/form-data">
-                            @csrf
+                            <form id="myForm" method="POST" action=" {{ route('store.brand') }} " enctype="multipart/form-data">
+                                @csrf
                             <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Brand Name</h6>
@@ -59,7 +58,6 @@
                             </div>
                          </form>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -25,17 +25,18 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
+                            <form id="myForm" method="POST" action=" {{ route('update.brand') }} " enctype="multipart/form-data">
+                                @csrf
 
-                            <form id="myForm" method="POST" action="{{route('update.brand')}}" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="id" value="{{$brand->id}}">
-                            <input type="hidden" name="old_img" value="{{$brand->brand_image}}">
+                                <input type="hidden" name="id" value=" {{$brand->id}} ">
+                                <input type="hidden" name="old_img" value=" {{$brand->brand_image}} ">
+
                             <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Brand Name</h6>
                                 </div>
                                 <div class="form-group col-sm-9 text-secondary">
-                                    <input type="text" name="brand_name" class="form-control" value="{{$brand->brand_name}}" />
+                                    <input type="text" name="brand_name" class="form-control" value=" {{$brand->brand_name}} " />
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -43,7 +44,7 @@
                                     <h6 class="mb-0">Brand Image</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="file" name="brand_image" class="form-control" id="image" />
+                                    <input type="file" name="brand_image" class="form-control" id="image"  />
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -61,7 +62,6 @@
                             </div>
                          </form>
                         </div>
-
                     </div>
                 </div>
             </div>

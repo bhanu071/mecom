@@ -77,11 +77,9 @@ Route::controller(BrandController::class)->group(function(){
     Route::get('/all/brand', [BrandController::class, 'AllBrand'])->name('all.brand');
     Route::get('/add/brand', [BrandController::class, 'AddBrand'])->name('add.brand');
     Route::post('/store/brand', [BrandController::class, 'StoreBrand'])->name('store.brand');
-    Route::get('/edit/brand/{id}', [BrandController::class, 'EditBrand'])->name('edit.brand');
-    Route::post('/store/brand', [BrandController::class, 'UpdateBrand'])->name('update.brand');
-    Route::get('/delete/brand/{id}', [BrandController::class, 'DeleteBrand'])->name('delete.brand');
-
-
+    Route::get('/brand/edit/{id}', [BrandController::class, 'EditBrand'])->name('brand.edit');
+    Route::post('/update/brand', [BrandController::class, 'UpdateBrand'])->name('update.brand');
+    Route::get('/brand/delete/{id}', [BrandController::class, 'DeleteBrand'])->name('brand.delete');
 });
 
  //Category All Routes
@@ -104,9 +102,8 @@ Route::controller(SubcategoryController::class)->group(function(){
     Route::post('/strore/subcategory', [SubcategoryController::class, 'StoreSubCategory'])->name('strore.subcategory');
     Route::get('/edit/subcategory/{id}', [SubcategoryController::class, 'EditSubCategory'])->name('edit.subcategory');    
     Route::post('/update/subcategory', [SubcategoryController::class, 'UpdateSubCategory'])->name('update.subcategory');    
-    Route::get('/delete/subcategory/{id}', [SubcategoryController::class, 'DeleteSubCategory'])->name('delete.subcategory');    
-    Route::get('/subcategory/ajax/{category_id}', [SubcategoryController::class, 'GetSubCategory']);    
-
+    Route::get('/delete/subcategory/{id}', [SubcategoryController::class, 'DeleteSubCategory'])->name('delete.subcategory');
+    Route::get('/subcategory/ajax/{category_id}' , 'GetSubCategory');
 });
 
 

@@ -49,6 +49,15 @@
                         </tr>
                         @endforeach
                     </tfoot>
+                    <thead>
+                        <tr>
+                            <th>Sl</th>
+                            <th>Category Name</th>
+                            <th>SubCategory Name</th>
+                            <th>Action</th>
+                            
+                        </tr>
+                    </thead>
                 </table>
             </div>
         </div>

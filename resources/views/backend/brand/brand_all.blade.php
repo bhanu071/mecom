@@ -15,7 +15,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{route('add.brand')}}" class="btn btn-primary">Add Brand</a>         
+                <a href=" {{route('add.brand')}} " class="btn btn-primary">Add Brand</a>         
             </div>
         </div>
     </div>
@@ -37,24 +37,31 @@
                     </thead>
                    
                     <tbody>
-                        @foreach($brands as $key=>$items)
+                       @foreach($brands as $key => $item)
                         <tr>
-                            <td>{{ $key = $key+1 }}</td>
-                            <td>{{$items->brand_name}}</td>
-                            <td><img src="{{asset($items->brand_image)}}" alt="Brand" style="height: 70px; width:40px"></td>
+                            <th> {{$key+1}} </th>
+                            <th> {{$item->brand_name}} </th>
+                            <th>  <img src=" {{asset($item->brand_image)}} " alt="Brand" style="height:50px; width:70px"></th>
                             <td>
-                                <a href="{{route('edit.brand', $items->id)}}" class="btn btn-info">Edit</a>
-                                <a href="{{route('delete.brand', $items->id)}}" id="delete" class="btn btn-danger">Delete</a>
+                                <a href=" {{route('brand.edit', $item->id)}} " class="btn btn-info">Edit</a>
+                                <a href=" {{route('brand.delete', $item->id)}} " id="delete" class="btn btn-danger">Delete</a>
                             </td>                            
                         </tr>
                         @endforeach
                     </tfoot>
+                     <thead>
+                        <tr>
+                            <th>Sl</th>
+                            <th>Brand Name</th>
+                            <th>Brand Image</th>
+                            <th>Action</th>                            
+                        </tr>
+                    </thead>
                 </table>
             </div>
         </div>
     </div>
    
 </div>
-
 
 @endsection
